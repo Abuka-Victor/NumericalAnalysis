@@ -22,10 +22,11 @@ public class EvaluateExpression{
     }
 
     public static void testEvaluate() {
-        String expression = "3*x^3 + 5*x^2 + 7*x + 2";
-        double xValue = 2.0; // Example value for x
+//        String expression = "3*x^3 + 5*x^2 + 7*x + 2";
+        String expression = "-1 + 2*u";
+        double xValue = 0; // Example value for x
         
-        double result = evaluateExpression(expression, xValue, "x");
+        double result = evaluateExpression(expression, xValue, "u");
         System.out.println("Original Expression: " + expression);
         System.out.println("Value of x: " + xValue);
         System.out.println("Result: " + result);

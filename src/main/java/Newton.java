@@ -1,10 +1,6 @@
 
 import java.util.Scanner;
-import java.util.Stack;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-import net.objecthunter.exp4j.*;
 
 public class Newton {
 	
@@ -46,16 +42,35 @@ public class Newton {
 	    }
 	 
  public static double newtonForwardDifferential(double x[], double y[][], double value, int n) {
-		 double h = x[1] - x[0];
-		 
-		 double sum = y[0][0];
-	     double u = (value - x[0]) / h;
-
-	        for (int i = 1; i < n; i++) {
-	            sum += (calculateUForward(u, i) * y[0][i]) / factorial(i);
-	        }
-
-	        return sum;
+	 int chosenXIndex = 0;
+	 double h = x[1] - x[0];
+	 
+	 for (int i = 0; i < n; i++) {
+		 if(i == (n-1) & x[i] < value) {
+			 chosenXIndex = i;
+			 break;
+			 } 
+		 else  if(i == (n-1) & x[i] > value) {
+			 chosenXIndex = 0;
+			 break;
+			 }
+		 else if(x[i] <= value & x[i+1] > value) {
+			 chosenXIndex = i;
+			 break;
+			 }
+		 }
+	 double sum = y[chosenXIndex][1];
+	 double u = (value - x[chosenXIndex]) / h;
+	 
+	 for (int i = 2; i < n; i++) {
+		 String u_text = UValueGenerator.generateTerm(i);
+		 String expanded_u = AlgebraicExpansion.expandExpression(u_text);
+		 String diff_u = Differentiation.differentiate(expanded_u, 'u');
+		 double numerator_1 = EvaluateExpression.evaluateExpression(diff_u, u, "u");	
+		 sum += ((numerator_1 * y[chosenXIndex][i]) / factorial(i));
+	 }
+	 sum /= h;
+	 return sum;
 	 }
 	 
 	 

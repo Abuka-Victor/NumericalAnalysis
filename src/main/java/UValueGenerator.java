@@ -25,7 +25,7 @@ public class UValueGenerator {
 
     public static void testUvalueGenerator() {
         // Example usage
-        for (int i = 1; i <= 4; i++) {
+        for (int i = 0; i <= 4; i++) {
             System.out.println("Term " + i + ": " + generateTerm(i));
         }
     }

@@ -151,7 +151,7 @@ public class Differentiation {
     		expr = expr.replaceAll("\\+", " + ");
     		expr = expr.replaceAll("\\-", " - ");    		
     	}
-    	System.out.println("Formatted Expression " + expr);
+//    	System.out.println("Formatted Expression " + expr);
     	return expr;
     }
 
