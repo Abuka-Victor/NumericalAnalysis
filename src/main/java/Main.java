@@ -55,6 +55,8 @@ public class Main {
         double value = 1.1;
 //
         double result = Newton.newtonForwardDifferential(x, y, value, 7);
-        System.out.println("The result is: " + result);
+//        System.out.println("The result is: " + result);
+        
+        System.out.println("The euler exponent of 1 is: " + Exponential.EulerExponential(1, 6));
 	}
 }
